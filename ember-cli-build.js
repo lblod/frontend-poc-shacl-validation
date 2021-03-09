@@ -2,9 +2,20 @@
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
 
+const isProduction = process.env.EMBER_ENV === 'production';
+
 module.exports = function (defaults) {
   let app = new EmberApp(defaults, {
-    // Add options here
+    sassOptions: {
+      sourceMap: false,
+      includePaths: [
+        'node_modules/@appuniversum/appuniversum',
+        'node_modules/@appuniversum/ember-appuniversum/app/styles',
+      ],
+    },
+    autoprefixer: {
+      enabled: isProduction,
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated
