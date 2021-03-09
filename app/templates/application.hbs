@@ -1,5 +1,19 @@
-{{page-title "ShaclValidation"}}
+{{page-title "SHACL Validation POC"}}
 
-<h2 id="title">Welcome to Ember</h2>
+<AuMainHeader
+  @brandLink="https://www.vlaanderen.be/nl"
+  @homeRoute="index"
+  @appTitle="SHACL Validation POC"
+/>
 
-{{outlet}}
+<main id="main" class="au-c-main-container">
+  <div
+    class="au-c-main-container__content au-c-main-container__content--scroll"
+    id="content"
+  >
+    <div class="au-c-body-container">
+      <NavigationBar />
+      {{outlet}}
+    </div>
+  </div>
+</main>

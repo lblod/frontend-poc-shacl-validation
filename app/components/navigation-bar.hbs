@@ -1,0 +1,22 @@
+<AuToolbar @size="medium" @skin="tint" @border="bottom" class="au-c-toolbar__breadcrumbs">
+  <AuToolbarGroup>
+    <BreadcrumbsContainer
+      class="breadcrumbs au-c-list-horizontal"
+      @itemClass="breadcrumbs__item au-c-list-horizontal__item"
+      @linkClass="breadcrumbs__link au-c-link"
+    >
+      <li class="au-c-list-horizontal__item">
+        <AuDropdown @alignment="left" @dropdownTitle="Menu" @dropdownButtonLabel="Menu">
+          <AuLink @linkRoute="index" class="au-u-word-nowrap" role="menuitem">
+            <AuIcon @icon="document" @alignment="left" />
+            Upload data
+          </AuLink>
+          <AuLink @linkRoute="validation-reports" class="au-u-word-nowrap" role="menuitem">
+            <AuIcon @icon="check" @alignment="left" />
+            Validation reports
+          </AuLink>
+        </AuDropdown>
+      </li>
+    </BreadcrumbsContainer>
+  </AuToolbarGroup>
+</AuToolbar>
