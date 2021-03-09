@@ -1,7 +1,6 @@
-# shacl-validation
+# SHACL Validation POC
 
-This README outlines the details of collaborating on this Ember application.
-A short introduction of this app could easily go here.
+This ember application provides the frontend for an application that explores the posibilities of using [SHACL](https://www.w3.org/TR/shacl/) to validate RDF graphs. After a graph is validated a report will be generated which can be viewed using this application.
 
 ## Prerequisites
 

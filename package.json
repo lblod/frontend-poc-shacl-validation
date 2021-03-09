@@ -2,10 +2,13 @@
   "name": "shacl-validation",
   "version": "0.0.0",
   "private": true,
-  "description": "Small description for shacl-validation goes here",
-  "repository": "",
+  "description": "Frontend for the SHACL validation POC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lblod/frontend-poc-shacl-validation.git"
+  },
   "license": "MIT",
-  "author": "",
+  "author": "redpencil.io",
   "directories": {
     "doc": "doc",
     "test": "tests"
