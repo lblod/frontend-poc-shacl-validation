@@ -1,1 +1,54 @@
-{{outlet}}
+<AuDataTable
+  @content={{this.model}}
+  @fields="Conforms ShapeGraphWellFormed"
+  @noDataMessage="No reports"
+  @size={{this.size}}
+  @page={{this.page}}
+  @sort={{this.sort}} as |s|
+>
+  <s.menu as |menu|>
+    <menu.general>
+      <AuToolbar class="au-o-box">
+        <AuToolbarGroup>
+          <AuHeading @skin="2">
+            Validation reports
+          </AuHeading>
+        </AuToolbarGroup>
+        <AuToolbarGroup class="au-c-toolbar__group--center">
+          <AuDataTableTextSearch
+            @filter={{this.filter}}
+            @placeholder="Search"
+          />
+        </AuToolbarGroup>
+      </AuToolbar>
+    </menu.general>
+  </s.menu>
+  <s.content as |c|>
+    <c.header>
+      <th class="data-table__header-title">
+        Conforms
+      </th>
+      <th class="data-table__header-title">
+        ShapeGraphWellFormed
+      </th>
+      <th class="data-table__header-title"></th>
+    </c.header>
+    <c.body as |validationReport|>
+      <td>
+        {{validationReport.conforms}}
+      </td>
+      <td>
+        {{validationReport.ShapeGraphWellFormed}}
+      </td>
+      <td>
+        <LinkTo
+          class="au-c-link"
+          @route="validation-reports.details"
+          @model={{validationReport.id}}
+        >
+          View
+        </LinkTo>
+      </td>
+    </c.body>
+  </s.content>
+</AuDataTable>
