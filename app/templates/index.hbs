@@ -1,9 +1,94 @@
-{{page-title "Upload data"}}
+{{page-title "Validate RDF Data"}}
 
 <BreadcrumbsItem>
   <strong>
-    Upload data
+    Validate RDF data
   </strong>
 </BreadcrumbsItem>
 
-{{outlet}}
+<AuToolbar @border="bottom" @size="large">
+  <AuToolbarGroup>
+    <AuHeading @skin="2">
+      Validate RDF data
+    </AuHeading>
+  </AuToolbarGroup>
+</AuToolbar>
+
+<div class="au-c-body-container au-c-body-container--scroll">
+  <div class="au-o-box">
+    <div class="au-o-grid">
+      <div class="au-o-grid__item au-u-2-3@medium au-u-2-5@large">
+        <form
+          class="au-c-form"
+          id="validate-rdf-data-form"
+          {{on "submit" this.submitForValidation}}
+        >
+          <FileDropzone
+            @accept="text/turtle"
+            @name={{this.queueName}}
+            @multiple={{false}}
+            class="au-c-upload"
+            as |dropzone|
+          >
+            {{#if dropzone.active}}
+              <label class="au-c-upload-message">
+                {{#if dropzone.valid}}
+                  <AuIcon @icon="check" @alignment="left" />
+                  <small class="au-c-small-text">Drop your file here</small>
+                {{else}}
+                  <AuIcon @icon="triangle" @alignment="left" />
+                  <small class="au-c-small-text">This file type isn't supported</small>
+                {{/if}}
+              </label>
+            {{else}}
+              <FileUpload
+                @name={{this.queueName}}
+                @accept="text/turtle"
+                @multiple={{false}}
+                @onfileadd={{this.handleFileSelection}}
+              >
+                <span class="au-c-upload-label">
+                  <span class="au-c-upload-label__title">
+                    <AuIcon @icon="attachment" @alignment="left" />
+                    Click to select a Turtle(.ttl) file
+                  </span>
+                  {{#if dropzone.supported}}
+                    <small class="au-c-small-text">drag and drop your file here</small>
+                  {{/if}}
+                </span>
+              </FileUpload>
+            {{/if}}
+          </FileDropzone>
+
+          <p class="au-u-text-center">
+            <AuHelpText>Or enter RDF data in Turtle format</AuHelpText>
+          </p>
+
+          <div>
+            <AuLabel for="rdf-data-input">RDF data</AuLabel>
+            <AuTextarea
+              @width="block"
+              class="rdf-data-input"
+              id="rdf-data-input"
+              value={{this.rdfData}}
+              {{on "input" this.updateRdfData}}
+            ></AuTextarea>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<AuToolbar @border="top" @size="large">
+  <AuToolbarGroup>
+    <AuButton
+      @disabled={{this.shouldDisableSubmit}}
+      @loading={{this.submitForValidation.isRunning}}
+      form="validate-rdf-data-form"
+      type="submit"
+    >
+      Validate
+    </AuButton>
+  </AuToolbarGroup>
+</AuToolbar>
