@@ -6,4 +6,56 @@
   </strong>
 </BreadcrumbsItem>
 
-{{outlet}}
+<AuDataTable
+  @content={{this.model.results}}
+  @fields="FocusNode ResultMessage ResultPath SourceConstraint Value"
+  @noDataMessage="No reports" as |s|
+>
+  <s.menu as |menu|>
+    <menu.general>
+      <AuToolbar class="au-o-box">
+        <AuToolbarGroup>
+          <AuHeading @skin="2">
+            Validation results
+          </AuHeading>
+        </AuToolbarGroup>
+      </AuToolbar>
+    </menu.general>
+  </s.menu>
+  <s.content as |c|>
+    <c.header>
+      <th class="data-table__header-title">
+        Focus node
+      </th>
+      <th class="data-table__header-title">
+        Result message
+      </th>
+      <th class="data-table__header-title">
+        Result Path
+      </th>
+      <th class="data-table__header-title">
+        Source constraint
+      </th>
+       <th class="data-table__header-title">
+        Value
+      </th>
+    </c.header>
+    <c.body as |validationResult|>
+      <td>
+        {{validationResult.focusNode}}
+      </td>
+      <td>
+        {{validationResult.resultMessage}}
+      </td>
+      <td>
+        {{validationResult.resultPath}}
+      </td>
+      <td>
+        {{validationResult.SourceConstraint}}
+      </td>
+      <td>
+        {{validationResult.value}}
+      </td>
+    </c.body>
+  </s.content>
+</AuDataTable>
