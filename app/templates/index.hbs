@@ -21,7 +21,7 @@
         <form
           class="au-c-form"
           id="validate-rdf-data-form"
-          {{on "submit" this.submitForValidation}}
+          {{on "submit" (perform this.submitForValidation)}}
         >
           <FileDropzone
             @accept="text/turtle"

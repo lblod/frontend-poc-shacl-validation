@@ -4,7 +4,6 @@ import { inject as service } from '@ember/service';
 import { tracked } from '@glimmer/tracking';
 import { dropTask } from 'ember-concurrency';
 import fetch from 'fetch';
-import ENV from 'shacl-validation/config/environment';
 
 export default class IndexController extends Controller {
   @service('file-queue') fileQueueService;
@@ -34,9 +33,7 @@ export default class IndexController extends Controller {
   *submitForValidation(event) {
     event.preventDefault();
 
-    // TODO: Validate turtle data?
-
-    yield fetch(ENV.validationEndpoint, {
+    yield fetch('/validate', {
       method: 'POST',
       headers: {
         'Content-Type': 'text/turtle',
