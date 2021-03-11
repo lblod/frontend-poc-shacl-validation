@@ -33,7 +33,7 @@ export default class IndexController extends Controller {
   *submitForValidation(event) {
     event.preventDefault();
 
-    yield fetch('/validate', {
+    const response = yield fetch('/validate', {
       method: 'POST',
       headers: {
         'Content-Type': 'text/turtle',
@@ -41,9 +41,8 @@ export default class IndexController extends Controller {
       body: this.rdfData,
     });
 
-    this.reset();
-
-    // TODO: Redirect to the details page once we receive the uuid from the backend
+    const { id: validationReportId } = yield response.json();
+    this.transitionToRoute('validation-reports.details', validationReportId);
   }
 
   @action
