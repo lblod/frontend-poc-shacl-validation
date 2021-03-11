@@ -8,7 +8,6 @@
 
 <AuDataTable
   @content={{this.model.results}}
-  @fields="FocusNode ResultMessage ResultPath SourceConstraint Value"
   @noDataMessage="No reports" as |s|
 >
   <s.menu as |menu|>
@@ -28,16 +27,25 @@
         Focus node
       </th>
       <th class="data-table__header-title">
-        Result message
+        Class / Property 
       </th>
       <th class="data-table__header-title">
-        Result Path
+        Value
+      </th>
+      <th class="data-table__header-title">
+        Error message
       </th>
       <th class="data-table__header-title">
         Source constraint
       </th>
+      <th class="data-table__header-title">
+        Result Severity
+      </th>
        <th class="data-table__header-title">
-        Value
+        Source Shape
+      </th>
+      <th class="data-table__header-title">
+        Source Constraint Component
       </th>
     </c.header>
     <c.body as |validationResult|>
@@ -45,16 +53,26 @@
         {{validationResult.focusNode}}
       </td>
       <td>
-        {{validationResult.resultMessage}}
-      </td>
-      <td>
         {{validationResult.resultPath}}
       </td>
       <td>
-        {{validationResult.SourceConstraint}}
+        {{validationResult.value}}
       </td>
       <td>
-        {{validationResult.value}}
+        {{ validationResult.transformResultMessage }}
+      </td>
+      
+      <td>
+        {{validationResult.sourceConstraint}}
+      </td>
+      <td>
+        {{if validationResult.resultSeverity validationResult.resultSeverity ""}}
+      </td>
+      <td>
+        {{if validationResult.sourceShape validationResult.sourceShape ""}}
+      </td>
+      <td>
+        {{if validationResult.sourceConstraintComponent validationResult.sourceConstraintComponent ""}}
       </td>
     </c.body>
   </s.content>

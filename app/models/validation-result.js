@@ -11,4 +11,13 @@ export default class ValidationResultModel extends Model {
   @belongsTo('severity') resultSeverity;
   @belongsTo('shape') sourceShape;
   @belongsTo('constraint-component') sourceConstraintComponent;
+
+  get transformResultMessage() {
+    if (this.resultMessage.includes('Closed')) {
+      return 'Property not defined';
+    } else if (this.resultMessage.includes('ClassConstraint')) {
+      return 'Class not defined';
+    }
+    return this.resultMessage;
+  }
 }
