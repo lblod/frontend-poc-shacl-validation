@@ -16,12 +16,6 @@
         <AuToolbarGroup>
           <AuHeading @skin="2">
             Validation results
-
-            <AuHeading @skin="5">
-              <p>
-                PREFIX ex: http://example.com/ns#
-              </p>
-            </AuHeading>
           </AuHeading>
         </AuToolbarGroup>
       </AuToolbar>
@@ -41,44 +35,19 @@
       <th class="data-table__header-title">
         Error message
       </th>
-      <th class="data-table__header-title">
-        Source constraint
-      </th>
-      <th class="data-table__header-title">
-        Result Severity
-      </th>
-       <th class="data-table__header-title">
-        Source Shape
-      </th>
-      <th class="data-table__header-title">
-        Source Constraint Component
-      </th>
     </c.header>
     <c.body as |validationResult|>
       <td>
-        {{validationResult.transformFocusNode}}
+        {{validationResult.focusNode}}
       </td>
       <td>
-        {{validationResult.transformResultPath}}
+        {{validationResult.resultPath}}
       </td>
       <td>
-        {{validationResult.transformValue}}
+        {{validationResult.value}}
       </td>
       <td>
         {{ validationResult.transformResultMessage }}
-      </td>
-      
-      <td>
-        {{validationResult.sourceConstraint}}
-      </td>
-      <td>
-        {{if validationResult.resultSeverity validationResult.resultSeverity ""}}
-      </td>
-      <td>
-        {{if validationResult.sourceShape validationResult.sourceShape ""}}
-      </td>
-      <td>
-        {{if validationResult.sourceConstraintComponent validationResult.sourceConstraintComponent ""}}
       </td>
     </c.body>
   </s.content>

@@ -12,22 +12,6 @@ export default class ValidationResultModel extends Model {
   @belongsTo('shape') sourceShape;
   @belongsTo('constraint-component') sourceConstraintComponent;
 
-  get transformFocusNode() {
-    return this.focusNode.replace('http://example.com/ns#', 'ex:');
-  }
-
-  get transformResultPath() {
-    return this.resultPath.replace('http://example.com/ns#', 'ex:');
-  }
-
-  get transformValue() {
-    if (this.value) {
-      return this.value.replace('http://example.com/ns#', 'ex:');
-    } else {
-      return this.value;
-    }
-  }
-
   get transformResultMessage() {
     if (this.resultMessage.includes('Closed')) {
       return 'Property not defined';
