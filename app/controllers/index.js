@@ -8,7 +8,8 @@ import fetch from 'fetch';
 export default class IndexController extends Controller {
   @service('file-queue') fileQueueService;
 
-  @tracked rdfData = '';
+  @tracked _rdfData = '';
+  @tracked hasApiErrored = false;
   queueName = 'rdf-data';
 
   get hasData() {
@@ -17,6 +18,15 @@ export default class IndexController extends Controller {
 
   get shouldDisableSubmit() {
     return !this.hasData || this.submitForValidation.isRunning;
+  }
+
+  get rdfData() {
+    return this._rdfData;
+  }
+
+  set rdfData(value) {
+    this._rdfData = value;
+    this.hasApiErrored = false;
   }
 
   @action
@@ -33,6 +43,8 @@ export default class IndexController extends Controller {
   *submitForValidation(event) {
     event.preventDefault();
 
+    this.hasApiErrored = false;
+
     const response = yield fetch('/validate', {
       method: 'POST',
       headers: {
@@ -41,8 +53,12 @@ export default class IndexController extends Controller {
       body: this.rdfData,
     });
 
-    const { id: validationReportId } = yield response.json();
-    this.transitionToRoute('validation-reports.details', validationReportId);
+    if (response.ok) {
+      const { id: validationReportId } = yield response.json();
+      this.transitionToRoute('validation-reports.details', validationReportId);
+    } else {
+      this.hasApiErrored = true;
+    }
   }
 
   @action
@@ -52,5 +68,6 @@ export default class IndexController extends Controller {
 
   reset() {
     this.rdfData = '';
+    this.hasApiErrored = false;
   }
 }

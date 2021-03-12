@@ -23,6 +23,11 @@
           id="validate-rdf-data-form"
           {{on "submit" (perform this.submitForValidation)}}
         >
+          {{#if this.hasApiErrored}}
+            <AuAlert @alertIcon="alert-triangle" @alertskin={{"error"}} @alertsize={{"small"}}>
+              Something went wrong while validating your data
+            </AuAlert>
+          {{/if}}
           <FileDropzone
             @accept="text/turtle"
             @name={{this.queueName}}
