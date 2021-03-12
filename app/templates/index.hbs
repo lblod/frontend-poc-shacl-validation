@@ -37,13 +37,8 @@
           >
             {{#if dropzone.active}}
               <label class="au-c-upload-message">
-                {{#if dropzone.valid}}
-                  <AuIcon @icon="check" @alignment="left" />
-                  <small class="au-c-small-text">Drop your file here</small>
-                {{else}}
-                  <AuIcon @icon="triangle" @alignment="left" />
-                  <small class="au-c-small-text">This file type isn't supported</small>
-                {{/if}}
+                <AuIcon @icon="check" @alignment="left" />
+                <small class="au-c-small-text">Drop your file here</small>
               </label>
             {{else}}
               <FileUpload
