@@ -27,25 +27,13 @@
         Focus node
       </th>
       <th class="data-table__header-title">
-        Class / Property 
+        Property 
       </th>
       <th class="data-table__header-title">
         Value
       </th>
       <th class="data-table__header-title">
         Error message
-      </th>
-      <th class="data-table__header-title">
-        Source constraint
-      </th>
-      <th class="data-table__header-title">
-        Result Severity
-      </th>
-       <th class="data-table__header-title">
-        Source Shape
-      </th>
-      <th class="data-table__header-title">
-        Source Constraint Component
       </th>
     </c.header>
     <c.body as |validationResult|>
@@ -60,19 +48,6 @@
       </td>
       <td>
         {{ validationResult.transformResultMessage }}
-      </td>
-      
-      <td>
-        {{validationResult.sourceConstraint}}
-      </td>
-      <td>
-        {{if validationResult.resultSeverity validationResult.resultSeverity ""}}
-      </td>
-      <td>
-        {{if validationResult.sourceShape validationResult.sourceShape ""}}
-      </td>
-      <td>
-        {{if validationResult.sourceConstraintComponent validationResult.sourceConstraintComponent ""}}
       </td>
     </c.body>
   </s.content>
