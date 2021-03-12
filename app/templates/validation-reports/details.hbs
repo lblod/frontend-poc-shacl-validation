@@ -16,6 +16,12 @@
         <AuToolbarGroup>
           <AuHeading @skin="2">
             Validation results
+
+            <AuHeading @skin="5">
+              <p>
+                PREFIX ex: http://example.com/ns#
+              </p>
+            </AuHeading>
           </AuHeading>
         </AuToolbarGroup>
       </AuToolbar>
@@ -27,7 +33,7 @@
         Focus node
       </th>
       <th class="data-table__header-title">
-        Class / Property 
+        Property 
       </th>
       <th class="data-table__header-title">
         Value
@@ -50,13 +56,13 @@
     </c.header>
     <c.body as |validationResult|>
       <td>
-        {{validationResult.focusNode}}
+        {{validationResult.transformFocusNode}}
       </td>
       <td>
-        {{validationResult.resultPath}}
+        {{validationResult.transformResultPath}}
       </td>
       <td>
-        {{validationResult.value}}
+        {{validationResult.transformValue}}
       </td>
       <td>
         {{ validationResult.transformResultMessage }}

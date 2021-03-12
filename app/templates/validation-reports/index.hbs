@@ -21,9 +21,6 @@
       <th class="data-table__header-title">
         Is valid?
       </th>
-      <th class="data-table__header-title">
-        Shapes graph well formed?
-      </th>
       <th class="data-table__header-title"></th>
     </c.header>
     <c.body as |validationReport|>
@@ -32,9 +29,6 @@
       </td>
       <td>
         {{if validationReport.conforms "Yes" "No"}}
-      </td>
-      <td>
-        {{validationReport.shapesGraphWellFormed}}
       </td>
       <td>
         <LinkTo
